@@ -1,0 +1,14 @@
+<div id="list">
+    <ul>
+      <li #ideaEl *ngFor="let idea of goldenIdeas; let i = index" [attr.data-index]="i">
+        {{idea}}
+        <button id="delete" (click)="delete(ideaEl)">X</button>
+      </li>
+    </ul>
+  </div>
+
+  <div id="edit">
+    <input type="text" [(ngModel)]="idea">
+    <button (click)="add()">Dodaj</button>
+    <button (click)="clear()">Usuń wszystkie</button>
+  </div>
