@@ -1,0 +1,43 @@
+#container{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#header{
+    padding: 2px;
+    background-color: #707070;
+    width: 996px;
+}
+#header-text{
+    margin-left: 15px;
+}
+#list{
+    padding: 2px;
+    background-color: #707070;
+    width: 996px;
+    margin-top: 10px;
+}
+#edit{
+    padding: 5px;
+    background-color: #707070;
+    width: 990px;
+    margin-top: 10px;
+}
+#edit > button{
+    margin-left: 5px;
+}
+#delete{
+    visibility: hidden;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px; 
+}
+#delete:hover{
+    color: #b50000;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px black;
+}
+li:hover #delete{
+    visibility: visible;
+}
