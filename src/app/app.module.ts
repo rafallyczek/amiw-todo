@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'ngx-webstorage-service';
+import { LocalSorageService } from './local-sorage.service';
 
 import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
@@ -16,7 +17,7 @@ import { ItemComponent } from './item/item.component';
     FormsModule,
     StorageServiceModule
   ],
-  providers: [],
+  providers: [LocalSorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

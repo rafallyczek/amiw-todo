@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalSorageService } from '../local-sorage.service';
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.css']
+  styleUrls: ['./item.component.css'],
 })
 export class ItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localStorageService: LocalSorageService) { }
 
   ngOnInit() {
   }
 
-  public goldenIdeas = localStorage.getItem('mysli') ? JSON.parse(localStorage.getItem('mysli')) : [];
-  public index: number = localStorage.getItem('mysli') ? this.goldenIdeas.length : 0;
+  public goldenIdeas = this.localStorageService.load('mysli') ? JSON.parse(this.localStorageService.load('mysli')) : [];
+  public index: number = this.localStorageService.load('mysli') ? this.goldenIdeas.length : 0;
   public idea: string ="";
 
   public add(){
@@ -25,7 +26,7 @@ export class ItemComponent implements OnInit {
   }
 
   public saveToStorage(){
-    localStorage.setItem("mysli",JSON.stringify(this.goldenIdeas));
+    this.localStorageService.save("mysli",JSON.stringify(this.goldenIdeas));
   }
 
   public clear(){
