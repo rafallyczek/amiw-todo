@@ -1,3 +1,3 @@
 # Review
 
-List of golden ideas similar to to-do list logic
+List of golden ideas based on to-do list logic
