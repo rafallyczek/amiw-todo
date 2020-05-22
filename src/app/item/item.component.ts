@@ -32,6 +32,7 @@ export class ItemComponent implements OnInit {
   public clear(){
     localStorage.clear();
     this.goldenIdeas = [];
+    this.index = 0;
   }
 
   public delete(el){
