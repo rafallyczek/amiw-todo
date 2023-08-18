@@ -8,16 +8,22 @@ import { LocalSorageService } from '../local-sorage.service';
 })
 export class ItemComponent implements OnInit {
 
-  constructor(private localStorageService: LocalSorageService) { }
+  public goldenIdeas: string[] = [];
+  public index: number = 0;
+  public idea: string = "";
+
+  constructor(private localStorageService: LocalSorageService) {}
 
   ngOnInit() {
+    if(this.localStorageService.isEmpty){
+      this.localStorageService.save("mysli", this.goldenIdeas);
+    } else {
+      this.goldenIdeas = this.localStorageService.load('mysli');
+      this.index = this.goldenIdeas.length;
+    }
   }
 
-  public goldenIdeas = this.localStorageService.load('mysli') ? JSON.parse(this.localStorageService.load('mysli')) : [];
-  public index: number = this.localStorageService.load('mysli') ? this.goldenIdeas.length : 0;
-  public idea: string ="";
-
-  public add(){
+  public add() {
     if(this.idea!=""){
       this.goldenIdeas[this.index] = this.idea;
       this.saveToStorage();
@@ -25,17 +31,17 @@ export class ItemComponent implements OnInit {
     }
   }
 
-  public saveToStorage(){
-    this.localStorageService.save("mysli",JSON.stringify(this.goldenIdeas));
+  public saveToStorage() {
+    this.localStorageService.save("mysli", this.goldenIdeas);
   }
 
-  public clear(){
+  public clear() {
     localStorage.clear();
     this.goldenIdeas = [];
     this.index = 0;
   }
 
-  public delete(el){
+  public delete(el) {
     let myslIndex = el.getAttribute('data-index');
     this.goldenIdeas.splice(myslIndex,1);
     this.saveToStorage();
